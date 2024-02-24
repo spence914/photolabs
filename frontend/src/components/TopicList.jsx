@@ -3,11 +3,10 @@ import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-import topics from "mocks/topics";
 
 
 
-const TopicList = () => {
+const TopicList = (props) => {
   const generateTopicListItems = function(arr) {
     return arr.map((item) => (
       <TopicListItem key={item.id} item={item} />
@@ -16,7 +15,7 @@ const TopicList = () => {
 
   return (
     <div className="top-nav-bar__topic-list">
-      {generateTopicListItems(topics)}
+      {generateTopicListItems(props.topics)}
     </div>
   );
 };
