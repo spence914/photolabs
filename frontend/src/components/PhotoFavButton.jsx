@@ -8,7 +8,7 @@ function PhotoFavButton() {
 
   const clickHandler = function(){
     console.log("clicked");
-    setIsLiked(!isLiked)
+    setIsLiked(prevIsLiked => !prevIsLiked)
   }
 
   const iconClass = isLiked ? "photo-list__fav-icon--liked" : ""
