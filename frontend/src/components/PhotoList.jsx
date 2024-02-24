@@ -59,8 +59,8 @@ const sampleDataForPhotoList = [
 
 const PhotoList = () => {
   const generatePhotoListItems = function(arr) {
-  return arr.map((photo, index) => (
-    <PhotoListItem key={index} photo={photo} />
+  return arr.map((photo) => (
+    <PhotoListItem key={photo.id} photo={photo} />
   ))
   };
   
