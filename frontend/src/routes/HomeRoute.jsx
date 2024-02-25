@@ -8,6 +8,7 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
   const [favPhotos, setFavPhotos] = useState([])
+  const displayLikeBadge = favPhotos.length > 0 ? true : false
 
   function toggleFav(photoId) {
     setFavPhotos(prev => {
@@ -21,7 +22,7 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topics={props.topics} favPhotos={favPhotos} />
+      <TopNavigation topics={props.topics} displayLikeBadge={displayLikeBadge} />
       <PhotoList photos={props.photos} toggleFav={toggleFav} favPhotos={favPhotos}/>
     </div>
   );
