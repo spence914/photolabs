@@ -5,11 +5,15 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
 
+
+const clickHandler = () => {
+  props.toggleModalViewInfo()
+}
   
   return (
     <div className="photo-list__item">
       <PhotoFavButton toggleFav={props.toggleFav} id={props.photo.id} favPhotos={props.favPhotos} />
-      <img className="photo-list__image" src={props.photo.urls.regular} />
+      <img className="photo-list__image" src={props.photo.urls.regular} onClick={clickHandler} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={props.photo.user.profile} />
         <div className="photo-list__user-info">

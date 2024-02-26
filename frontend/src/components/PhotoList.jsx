@@ -9,7 +9,7 @@ import PhotoListItem from "./PhotoListItem";
 const PhotoList = (props) => {
   const generatePhotoListItems = function(arr) {
   return arr.map((photo) => (
-    <PhotoListItem key={photo.id} photo={photo} toggleFav={props.toggleFav} favPhotos={props.favPhotos}/>
+    <PhotoListItem key={photo.id} photo={photo} toggleFav={props.toggleFav} favPhotos={props.favPhotos} toggleModalViewInfo={props.toggleModalViewInfo}/>
   ))
   };
   

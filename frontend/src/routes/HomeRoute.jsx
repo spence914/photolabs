@@ -23,7 +23,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation topics={props.topics} displayLikeBadge={displayLikeBadge} />
-      <PhotoList photos={props.photos} toggleFav={toggleFav} favPhotos={favPhotos}/>
+      <PhotoList photos={props.photos} toggleFav={toggleFav} favPhotos={favPhotos} toggleModalViewInfo={props.toggleModalViewInfo}/>
     </div>
   );
 };
