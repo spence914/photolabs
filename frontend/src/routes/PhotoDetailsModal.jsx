@@ -5,11 +5,11 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
 
-    const clickHandler = () => props.toggleModalViewInfo()
+    
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={clickHandler}>
+      <button className="photo-details-modal__close-button" onClick={props.toggleModalViewInfo}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
     </div>

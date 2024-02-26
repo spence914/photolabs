@@ -7,7 +7,11 @@ const PhotoListItem = (props) => {
 
 
 const clickHandler = () => {
-  props.toggleModalViewInfo()
+  props.toggleModalViewInfo();
+
+  props.modalViewInfo.photo = props.photo;
+
+  console.log(props.modalViewInfo.photo)
 }
   
   return (

@@ -19,7 +19,7 @@ const toggleModalViewInfo = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleModalViewInfo={toggleModalViewInfo} />
+      <HomeRoute photos={photos} topics={topics} toggleModalViewInfo={toggleModalViewInfo} modalViewInfo={modalViewInfo}/>
       {modalViewInfo.view && <PhotoDetailsModal toggleModalViewInfo={toggleModalViewInfo} />}
     </div>
   );
