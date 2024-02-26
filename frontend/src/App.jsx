@@ -19,8 +19,8 @@ const toggleModalViewInfo = () => {
 
   return (
     <div className="App">
-      {modalViewInfo.view && <PhotoDetailsModal toggleModalViewInfo={toggleModalViewInfo} />}
       <HomeRoute photos={photos} topics={topics} toggleModalViewInfo={toggleModalViewInfo} />
+      {modalViewInfo.view && <PhotoDetailsModal toggleModalViewInfo={toggleModalViewInfo} />}
     </div>
   );
 };
