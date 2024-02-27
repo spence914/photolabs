@@ -13,14 +13,18 @@ const App = () => {
 
   const [modalViewInfo, setModalViewInfo] = useState({view: false}) 
 
-const toggleModalViewInfo = () => {
-  setModalViewInfo(prevState => ({ view: !prevState.view }));
-}
+  const toggleModalViewInfo = (newPhoto) => {
+    setModalViewInfo(prevState => ({
+      ...prevState,
+      view: !prevState.view,
+      photo: newPhoto || prevState.photo,
+    }));
+  }
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleModalViewInfo={toggleModalViewInfo} modalViewInfo={modalViewInfo}/>
-      {modalViewInfo.view && <PhotoDetailsModal toggleModalViewInfo={toggleModalViewInfo} />}
+      <HomeRoute photos={photos} topics={topics} toggleModalViewInfo={toggleModalViewInfo} modalViewInfo={modalViewInfo} setModalViewInfo={setModalViewInfo}/>
+      {modalViewInfo.view && <PhotoDetailsModal toggleModalViewInfo={toggleModalViewInfo} modalViewInfo={modalViewInfo} />}
     </div>
   );
 };

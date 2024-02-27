@@ -6,13 +6,9 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
 
 
-const clickHandler = () => {
-  props.toggleModalViewInfo();
-
-  props.modalViewInfo.photo = props.photo;
-
-  console.log(props.modalViewInfo.photo)
-}
+  const clickHandler = () => {
+    props.toggleModalViewInfo(props.photo);
+  }
   
   return (
     <div className="photo-list__item">
