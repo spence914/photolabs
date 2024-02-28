@@ -7,18 +7,7 @@ import PhotoList from "components/PhotoList";
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
-  // const [favPhotos, setFavPhotos] = useState([]);
-  // const displayLikeBadge = favPhotos.length > 0 ? true : false;
 
-  // function toggleFav(photoId) {
-  //   setFavPhotos((prev) => {
-  //     if (prev.includes(photoId)) {
-  //       return prev.filter((id) => id !== photoId);
-  //     } else {
-  //       return [...prev, photoId];
-  //     }
-  //   });
-  // }
 
   return (
     <div className="home-route">
