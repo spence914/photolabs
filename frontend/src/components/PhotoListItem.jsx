@@ -7,7 +7,8 @@ const PhotoListItem = (props) => {
 
 
   const clickHandler = () => {
-    props.toggleModalViewInfo(props.photo);
+    props.updateModalViewInfo(props.photo);
+    props.toggleModalView();
   }
   
   return (

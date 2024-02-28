@@ -12,10 +12,17 @@ import topics from "mocks/topics";
 const App = () => {
   const [modalViewInfo, setModalViewInfo] = useState({ view: false });
 
-  const toggleModalViewInfo = (newPhoto) => {
-    setModalViewInfo((prevState) => ({
+
+  const toggleModalView = () => {
+    setModalViewInfo(prevState => ({
       ...prevState,
       view: !prevState.view,
+    }));
+  };
+
+  const updateModalViewInfo = (newPhoto) => {
+    setModalViewInfo(prevState => ({
+      ...prevState,
       photo: newPhoto || prevState.photo,
     }));
   };
@@ -39,19 +46,21 @@ const App = () => {
       <HomeRoute
         photos={photos}
         topics={topics}
-        toggleModalViewInfo={toggleModalViewInfo}
+        updateModalViewInfo={updateModalViewInfo}
         modalViewInfo={modalViewInfo}
-        setModalViewInfo={setModalViewInfo}
+        toggleModalView={toggleModalView}
         toggleFav={toggleFav}
         favPhotos={favPhotos}
         displayLikeBadge={displayLikeBadge}
       />
       {modalViewInfo.view && (
         <PhotoDetailsModal
-          toggleModalViewInfo={toggleModalViewInfo}
+        
           modalViewInfo={modalViewInfo}
           toggleFav={toggleFav}
           favPhotos={favPhotos}
+          toggleModalView={toggleModalView}
+          updateModalViewInfo={updateModalViewInfo}
         />
       )}
     </div>

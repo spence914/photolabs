@@ -19,9 +19,9 @@ const HomeRoute = (props) => {
         photos={props.photos}
         toggleFav={props.toggleFav}
         favPhotos={props.favPhotos}
-        toggleModalViewInfo={props.toggleModalViewInfo}
+        updateModalViewInfo={props.updateModalViewInfo}
         modalViewInfo={props.modalViewInfo}
-        setModalViewInfo={props.setModalViewInfo}
+        toggleModalView={props.toggleModalView}
       />
     </div>
   );

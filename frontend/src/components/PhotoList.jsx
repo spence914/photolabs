@@ -11,9 +11,8 @@ const PhotoList = (props) => {
         photo={photo}
         toggleFav={props.toggleFav}
         favPhotos={props.favPhotos}
-        toggleModalViewInfo={props.toggleModalViewInfo}
-        modalViewInfo={props.modalViewInfo}
-        setModalViewInfo={props.setModalViewInfo}
+        updateModalViewInfo={props.updateModalViewInfo}
+        toggleModalView={props.toggleModalView}
       />
     ));
   };

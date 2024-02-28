@@ -17,9 +17,8 @@ const PhotoDetailsModal = (props) => {
         photo={photo}
         toggleFav={props.toggleFav}
         favPhotos={props.favPhotos}
-        toggleModalViewInfo={props.toggleModalViewInfo}
-        modalViewInfo={props.modalViewInfo}
-        setModalViewInfo={props.setModalViewInfo}
+        updateModalViewInfo={props.updateModalViewInfo}
+        toggleModalView={props.toggleModalView}
       />
     ));
   };
@@ -28,7 +27,7 @@ const PhotoDetailsModal = (props) => {
     <div className="photo-details-modal">
       <button
         className="photo-details-modal__close-button"
-        onClick={props.toggleModalViewInfo}
+        onClick={props.toggleModalView}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
