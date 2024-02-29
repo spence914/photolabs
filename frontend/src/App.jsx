@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import useApplicationData from "hooks/useApplicationData";
+
 import "./App.scss";
 
 import HomeRoute from "routes/HomeRoute";
@@ -10,46 +12,26 @@ import topics from "mocks/topics";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [modalViewInfo, setModalViewInfo] = useState({ view: false });
 
 
-  const toggleModalView = () => {
-    setModalViewInfo(prevState => ({
-      ...prevState,
-      view: !prevState.view,
-    }));
-  };
+const {
+  state: { modalViewInfo, favPhotos },
+  onClosePhotoDetailsModal,
+  setPhotoSelected,
+  udpateToFavPhotoIds,
+  displayLikeBadge,
+} = useApplicationData();
 
-  const updateModalViewInfo = (newPhoto) => {
-    setModalViewInfo(prevState => ({
-      ...prevState,
-      photo: newPhoto || prevState.photo,
-    }));
-  };
-
-
-  const [favPhotos, setFavPhotos] = useState([]);
-  const displayLikeBadge = favPhotos.length > 0 ? true : false;
-
-  function toggleFav(photoId) {
-    setFavPhotos((prev) => {
-      if (prev.includes(photoId)) {
-        return prev.filter((id) => id !== photoId);
-      } else {
-        return [...prev, photoId];
-      }
-    });
-  }
 
   return (
     <div className="App">
       <HomeRoute
         photos={photos}
         topics={topics}
-        updateModalViewInfo={updateModalViewInfo}
+        updateModalViewInfo={setPhotoSelected}
         modalViewInfo={modalViewInfo}
-        toggleModalView={toggleModalView}
-        toggleFav={toggleFav}
+        toggleModalView={onClosePhotoDetailsModal}
+        toggleFav={udpateToFavPhotoIds}
         favPhotos={favPhotos}
         displayLikeBadge={displayLikeBadge}
       />
@@ -57,10 +39,10 @@ const App = () => {
         <PhotoDetailsModal
         
           modalViewInfo={modalViewInfo}
-          toggleFav={toggleFav}
+          toggleFav={udpateToFavPhotoIds}
           favPhotos={favPhotos}
-          toggleModalView={toggleModalView}
-          updateModalViewInfo={updateModalViewInfo}
+          toggleModalView={onClosePhotoDetailsModal}
+          updateModalViewInfo={setPhotoSelected}
         />
       )}
     </div>
