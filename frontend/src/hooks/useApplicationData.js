@@ -1,46 +1,68 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
-function useApplicationData() {
-  const [state, setState] = useState({
-    modalViewInfo: { view: false },
+
+export const ACTIONS = {
+  FAV_PHOTO_TOGGLE: 'FAV_PHOTO_TOGGLE',
+  MODAL_TOGGLE: 'MODAL_TOGGLE',
+  SET_MODAL_PHOTO: 'SET_MODAL_PHOTO',
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.FAV_PHOTO_TOGGLE: {
+      const isFav = state.favPhotos.includes(action.payload.photoId);
+      const newFavPhotos = isFav
+        ? state.favPhotos.filter((id) => id !== action.payload.photoId)
+        : [...state.favPhotos, action.payload.photoId];
+
+      return {
+        ...state,
+        favPhotos: newFavPhotos,
+      };
+    }
+    case ACTIONS.MODAL_TOGGLE: {
+      return {
+        ...state,
+        modalViewInfo: {
+          ...state.modalViewInfo,
+          view: !state.modalViewInfo.view,
+        },
+      };
+    }
+    case ACTIONS.SET_MODAL_PHOTO: {
+      return {
+        ...state,
+        modalViewInfo: {
+          ...state.modalViewInfo,
+          photo: action.payload.newPhoto || state.modalViewInfo.photo,
+        },
+      };
+    }
+    default:
+      return state;
+  }
+}
+
+
+export function useApplicationData() {
+  const initialState = {
+    modalViewInfo: { view: false, photo: null },
     favPhotos: [],
-    displayLikeBadge: false, 
-  });
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const onClosePhotoDetailsModal = () => {
-    setState((prevState) => ({
-      ...prevState,
-      modalViewInfo: {
-        ...prevState.modalViewInfo,
-        view: !prevState.modalViewInfo.view,
-      },
-    }));
+    dispatch({ type: ACTIONS.MODAL_TOGGLE });
   };
 
   const setPhotoSelected = (newPhoto) => {
-    setState((prevState) => ({
-      ...prevState,
-      modalViewInfo: {
-        ...prevState.modalViewInfo,
-        photo: newPhoto || prevState.modalViewInfo.photo,
-      },
-    }));
+    dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: { newPhoto } });
   };
 
   const udpateToFavPhotoIds = (photoId) => {
-    setState((prevState) => {
-      const isFav = prevState.favPhotos.includes(photoId);
-      const newFavPhotos = isFav
-        ? prevState.favPhotos.filter((id) => id !== photoId)
-        : [...prevState.favPhotos, photoId];
-
-      return {
-        ...prevState,
-        favPhotos: newFavPhotos,
-      };
-    });
+    dispatch({ type: ACTIONS.FAV_PHOTO_TOGGLE, payload: { photoId } });
   };
-
 
   return {
     state,
