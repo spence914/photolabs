@@ -4,7 +4,7 @@ function useApplicationData() {
   const [state, setState] = useState({
     modalViewInfo: { view: false },
     favPhotos: [],
-    displayLikeBadge: false, // This will be derived from favPhotos, so it doesn't need to be in state
+    displayLikeBadge: false, 
   });
 
   const onClosePhotoDetailsModal = () => {
@@ -37,13 +37,11 @@ function useApplicationData() {
       return {
         ...prevState,
         favPhotos: newFavPhotos,
-        displayLikeBadge: newFavPhotos.length > 0,
       };
     });
   };
 
-  // Since `displayLikeBadge` is derived from `favPhotos`, we do not set it directly
-  // in the state. Instead, we compute it each time the state is updated.
+
   return {
     state,
     onClosePhotoDetailsModal,
