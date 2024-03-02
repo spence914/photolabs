@@ -1,10 +1,12 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect } from "react";
 
 
 export const ACTIONS = {
   FAV_PHOTO_TOGGLE: 'FAV_PHOTO_TOGGLE',
   MODAL_TOGGLE: 'MODAL_TOGGLE',
   SET_MODAL_PHOTO: 'SET_MODAL_PHOTO',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA', 
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
 };
 
 function reducer(state, action) {
@@ -38,6 +40,18 @@ function reducer(state, action) {
         },
       };
     }
+    case ACTIONS.SET_PHOTO_DATA: {
+      return {
+        ...state,
+        photoData: action.payload
+      }
+    }
+    case ACTIONS.SET_TOPIC_DATA: {
+      return {
+        ...state,
+        topicData: action.payload
+      }
+    }
     default:
       return state;
   }
@@ -48,7 +62,21 @@ export function useApplicationData() {
   const initialState = {
     modalViewInfo: { view: false, photo: null },
     favPhotos: [],
+    photoData: [],
+    topicData: []
   };
+
+  useEffect(() => {
+    fetch('/api/photos')
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/topics')
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+  }, [])
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
