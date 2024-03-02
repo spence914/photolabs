@@ -6,7 +6,7 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
   return (
-    <div className="topic-list__item">
+    <div className="topic-list__item" onClick={() => props.updateSelectedTopic(props.topic.id)}>
       <span>{props.topic.title}</span>
     </div>
   );

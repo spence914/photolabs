@@ -9,7 +9,7 @@ import TopicListItem from "./TopicListItem";
 const TopicList = (props) => {
   const generateTopicListItems = function(arr) {
     return arr.map((topic) => (
-      <TopicListItem key={topic.id} topic={topic} />
+      <TopicListItem key={topic.id} topic={topic} updateSelectedTopic={props.updateSelectedTopic} />
     ))
   }
 

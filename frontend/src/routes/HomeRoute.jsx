@@ -14,6 +14,7 @@ const HomeRoute = (props) => {
       <TopNavigation
         topics={props.topics}
         displayLikeBadge={props.displayLikeBadge}
+        updateSelectedTopic={props.updateSelectedTopic}
       />
       <PhotoList
         photos={props.photos}
