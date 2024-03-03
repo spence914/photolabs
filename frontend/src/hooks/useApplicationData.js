@@ -89,11 +89,14 @@ export function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (state.selectedTopicId) {
-      fetch(`/api/topics/photos/${state.selectedTopicId}`)
+    const url = state.selectedTopicId 
+    ? `/api/topics/photos/${state.selectedTopicId}` 
+    : '/api/photos';
+
+      fetch(url)
         .then(res => res.json())
         .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-    }
+    
   }, [state.selectedTopicId])
 
 
