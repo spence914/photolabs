@@ -8,7 +8,7 @@ const FavBadge = (props) => {
 
   return (
     <div className='fav-badge'>
-      <FavIcon displayAlert={displayAlertBadge} displayLikeBadge={props.displayLikeBadge}/>
+      <FavIcon displayAlert={displayAlertBadge} selected={props.selected}/>
     </div>
   ) 
 };
