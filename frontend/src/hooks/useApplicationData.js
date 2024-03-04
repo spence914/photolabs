@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 
 
 export const ACTIONS = {
@@ -12,6 +12,11 @@ export const ACTIONS = {
 
 function reducer(state, action) {
   switch (action.type) {
+    
+    // Toggles a photos liked badge by checking if the photos ID is included in the favPhotos array, stored 
+    // in state. If photo ID is not included it is added, if it is there it is removed. If the photo is included
+    // PhotoFavButton passes isFavourite as the 'selected' prop to FavIcon as 'true' and the heart isd rendered
+    // filled in.
     case ACTIONS.FAV_PHOTO_TOGGLE: {
       const isFav = state.favPhotos.includes(action.payload.photoId);
       const newFavPhotos = isFav
@@ -23,6 +28,9 @@ function reducer(state, action) {
         favPhotos: newFavPhotos,
       };
     }
+// Toggles modal visiblilty by toggling a boolean value keyed to 'view' inside the modalViewInfo object
+// within state. Short circuit rendering on ap.jsx determines whether the modal is visible. 
+
     case ACTIONS.MODAL_TOGGLE: {
       return {
         ...state,
@@ -32,33 +40,47 @@ function reducer(state, action) {
         },
       };
     }
+// Sets a selected photos ID as the modal view photo. Function passed as prop
+// from app => homeroute => photolist => photolistitem, used there as part of clickhandler 
+// along with modal view toggle.
+
     case ACTIONS.SET_MODAL_PHOTO: {
       return {
         ...state,
         modalViewInfo: {
           ...state.modalViewInfo,
-          photo: action.payload.newPhoto || state.modalViewInfo.photo,
+          photo: action.payload.newPhoto,
         },
       };
     }
+// Determines which photos are rendered by photolist on homeroute. photoData initialized as empty array, 
+// immediately populated by API call so all photos are displayed on initial pageload.
+// If a topic is selected from the navBar the photoData array is set to photos in that topic,
+// main page is rerendered with only photos relevant to that topic
+
     case ACTIONS.SET_PHOTO_DATA: {
       return {
         ...state,
         photoData: action.payload
       }
     }
+// Topic data pulled from API call, used to create topic list in navBar.
+
     case ACTIONS.SET_TOPIC_DATA: {
       return {
         ...state,
         topicData: action.payload
       }
     }
+// Sets topicId in state, triggered when a topic is selected from the navbar.
+
     case ACTIONS.SET_SELECTED_TOPIC: {
       return {
         ...state,
         selectedTopicId: action.payload.topicId,
       }
     }
+
     default:
       return state;
   }
@@ -88,6 +110,9 @@ export function useApplicationData() {
   
   const [state, dispatch] = useReducer(reducer, initialState);
 
+// Used with SET_PHOTO_DATA action to make API call that populates photoData array with
+// photos from selected topic. Waits for changes to selectedTopicId to rerender.
+
   useEffect(() => {
     const url = state.selectedTopicId 
     ? `/api/topics/photos/${state.selectedTopicId}` 
@@ -108,7 +133,7 @@ export function useApplicationData() {
     dispatch({ type: ACTIONS.SET_MODAL_PHOTO, payload: { newPhoto } });
   };
 
-  const udpateToFavPhotoIds = (photoId) => {
+  const updateToFavPhotoIds = (photoId) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_TOGGLE, payload: { photoId } });
   };
 
@@ -120,7 +145,7 @@ export function useApplicationData() {
     state,
     onClosePhotoDetailsModal,
     setPhotoSelected,
-    udpateToFavPhotoIds,
+    updateToFavPhotoIds,
     displayLikeBadge: state.favPhotos.length > 0,
     updateSelectedTopic
   };

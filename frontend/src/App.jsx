@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import useApplicationData from "hooks/useApplicationData";
 
@@ -9,7 +9,6 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
 
 
@@ -17,7 +16,7 @@ const {
   state: { modalViewInfo, favPhotos, photoData, topicData },
   onClosePhotoDetailsModal,
   setPhotoSelected,
-  udpateToFavPhotoIds,
+  updateToFavPhotoIds,
   displayLikeBadge,
   updateSelectedTopic,
 } = useApplicationData();
@@ -31,7 +30,7 @@ const {
         updateModalViewInfo={setPhotoSelected}
         modalViewInfo={modalViewInfo}
         toggleModalView={onClosePhotoDetailsModal}
-        toggleFav={udpateToFavPhotoIds}
+        toggleFav={updateToFavPhotoIds}
         favPhotos={favPhotos}
         displayLikeBadge={displayLikeBadge}
         updateSelectedTopic={updateSelectedTopic}
@@ -40,7 +39,7 @@ const {
         <PhotoDetailsModal
         
           modalViewInfo={modalViewInfo}
-          toggleFav={udpateToFavPhotoIds}
+          toggleFav={updateToFavPhotoIds}
           favPhotos={favPhotos}
           toggleModalView={onClosePhotoDetailsModal}
           updateModalViewInfo={setPhotoSelected}
