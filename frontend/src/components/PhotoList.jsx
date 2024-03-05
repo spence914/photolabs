@@ -13,6 +13,7 @@ const PhotoList = (props) => {
         favPhotos={props.favPhotos}
         updateModalViewInfo={props.updateModalViewInfo}
         toggleModalView={props.toggleModalView}
+        modalViewInfo={props.modalViewInfo}
       />
     ));
   };

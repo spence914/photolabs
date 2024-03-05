@@ -8,6 +8,10 @@ import PhotoListItem from "components/PhotoListItem";
 const PhotoDetailsModal = (props) => {
 
   const generateSimilarPhotosList = function (similarPhotos) {
+
+    if (!similarPhotos) {
+      return [];
+    }
     const similarPhotosArray = Object.values(similarPhotos);
 
     return similarPhotosArray.map((photo) => (

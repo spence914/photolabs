@@ -8,12 +8,13 @@ const PhotoListItem = (props) => {
 
   const clickHandler = () => {
     props.updateModalViewInfo(props.photo);
+    if(!props.modalViewInfo.view) {
     props.toggleModalView();
       window.scrollTo({
     top: 150,
     left: 0,
     behavior: 'smooth',
-  });
+  })};
   }
   
   return (
