@@ -11,7 +11,7 @@ export const ACTIONS = {
 };
 
 const initialState = {
-  modalViewInfo: { view: false, photo: null },
+  modalViewInfo: { view: false, photo: null, similarPhotos: null },
   favPhotos: [],
   photoData: [],
   topicData: [],
@@ -58,6 +58,7 @@ function reducer(state, action) {
         modalViewInfo: {
           ...state.modalViewInfo,
           photo: action.payload.newPhoto,
+          similarPhotos: action.payload.newPhoto.similar_photos,
         },
       };
     }

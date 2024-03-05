@@ -26,6 +26,7 @@ const HomeRoute = (props) => {
         updateModalViewInfo={props.updateModalViewInfo}
         modalViewInfo={props.modalViewInfo}
         toggleModalView={props.toggleModalView}
+        
       />
     </div>
   );

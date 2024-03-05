@@ -8,9 +8,11 @@ import PhotoListItem from "components/PhotoListItem";
 const PhotoDetailsModal = (props) => {
 
   const generateSimilarPhotosList = function (similarPhotos) {
-    const similarPhotosArray = Object.values(similarPhotos);
+    if (!similarPhotos) {
+      return [];
+    }
 
-    return similarPhotosArray.map((photo) => (
+    return similarPhotos.map((photo) => (
       <PhotoListItem
         key={photo.id}
         photo={photo}
@@ -19,6 +21,7 @@ const PhotoDetailsModal = (props) => {
         updateModalViewInfo={props.updateModalViewInfo}
         toggleModalView={props.toggleModalView}
         modalViewInfo={props.modalViewInfo}
+        photos={props.photoData}
       />
     ));
   };
@@ -56,7 +59,7 @@ const PhotoDetailsModal = (props) => {
         </div>
         <p className="photo-details-modal__header">Similar Photos</p>
         <ul className="photo-list">
-          {generateSimilarPhotosList(props.modalViewInfo.photo.similar_photos)}
+          {generateSimilarPhotosList(props.modalViewInfo.similarPhotos)}
         </ul>
       </div>
     </div>

@@ -5,6 +5,8 @@ import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
 
 const TopNavigation = (props) => {
+
+  
   function filterPhotosByIds(photoObjects, ids) {
     return photoObjects.filter(photo => ids.includes(photo.id));
   }
