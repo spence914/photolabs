@@ -8,7 +8,9 @@ Additionally photos can be 'liked' from anywhere in the app. Likes will persist 
 To function properly the backend must be initialized as per the README instructions, then both backend and frontend servers must be running.
 
 ## Screenshots
-
+!["Main Page"](https://github.com/spence914/photolabs-starter/blob/main/docs/mainpage.png?raw=true)
+!["Modal View"](https://github.com/spence914/photolabs-starter/blob/main/docs/modalview.png?raw=true)
+!["Similar Photos"](https://github.com/spence914/photolabs-starter/blob/main/docs/similarPhotos.png?raw=true)
 
 ## Setup
 
