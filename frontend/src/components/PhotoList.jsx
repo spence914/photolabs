@@ -14,6 +14,7 @@ const PhotoList = (props) => {
         updateModalViewInfo={props.updateModalViewInfo}
         toggleModalView={props.toggleModalView}
         modalViewInfo={props.modalViewInfo}
+        photos={props.photos}
       />
     ));
   };

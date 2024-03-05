@@ -6,16 +6,24 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
 
 
-  const clickHandler = () => {
-    props.updateModalViewInfo(props.photo);
-    if(!props.modalViewInfo.view) {
-    props.toggleModalView();
-      window.scrollTo({
-    top: 150,
-    left: 0,
-    behavior: 'smooth',
-  })};
+  // Takes ID of photo passed to it and returns full object from original photos data
+  // used in the modal when a similar photo is clicked
+  const findPhotobyId = function(allPhotos, targetPhoto) {
+    const foundPhoto = allPhotos.find(item => item.id === targetPhoto.id)
+    return foundPhoto
   }
+  
+    const clickHandler = () => {
+      props.updateModalViewInfo(findPhotobyId(props.photos, props.photo));
+      if (!props.modalViewInfo.view) {
+        props.toggleModalView();
+        window.scrollTo({
+          top: 150,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    };
   
   return (
     <div className="photo-list__item">

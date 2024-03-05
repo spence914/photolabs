@@ -43,6 +43,8 @@ const {
           favPhotos={favPhotos}
           toggleModalView={onClosePhotoDetailsModal}
           updateModalViewInfo={setPhotoSelected}
+          photos={photoData}
+
         />
       )}
     </div>
