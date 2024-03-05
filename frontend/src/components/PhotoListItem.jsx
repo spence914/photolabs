@@ -4,9 +4,16 @@ import PhotoFavButton from "components/PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
+
+  // Takes ID of photo passed to it and returns full object from original photos data
+  // used in the modal when a similar photo is clicked
+const findPhotobyId = function(allPhotos, targetPhoto) {
+  const foundPhoto = allPhotos.find(item => item.id === targetPhoto.id)
+  return foundPhoto
+}
+
   const clickHandler = () => {
-    console.log(props.modalViewInfo)
-    props.updateModalViewInfo(props.photo);
+    props.updateModalViewInfo(findPhotobyId(props.photos, props.photo));
     if (!props.modalViewInfo.view) {
       props.toggleModalView();
       window.scrollTo({

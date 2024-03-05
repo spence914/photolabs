@@ -21,7 +21,7 @@ const PhotoDetailsModal = (props) => {
         updateModalViewInfo={props.updateModalViewInfo}
         toggleModalView={props.toggleModalView}
         modalViewInfo={props.modalViewInfo}
-        photos={props.photoData}
+        photos={props.photos}
       />
     ));
   };
