@@ -7,7 +7,8 @@ import TopicListItem from "./TopicListItem";
 
 
 const TopicList = (props) => {
-  const generateTopicListItems = function(arr) {
+  // Takes array of topics from state and populates them as TopicListItems
+  const generateTopicList = function(arr) {
     return arr.map((topic) => (
       <TopicListItem key={topic.id} topic={topic} updateSelectedTopic={props.updateSelectedTopic} />
     ))
@@ -15,7 +16,7 @@ const TopicList = (props) => {
 
   return (
     <div className="top-nav-bar__topic-list">
-      {generateTopicListItems(props.topics)}
+      {generateTopicList(props.topics)}
     </div>
   );
 };

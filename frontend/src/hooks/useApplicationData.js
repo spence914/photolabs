@@ -10,13 +10,21 @@ export const ACTIONS = {
   SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC',
 };
 
+const initialState = {
+  modalViewInfo: { view: false, photo: null },
+  favPhotos: [],
+  photoData: [],
+  topicData: [],
+  selectedTopicId: null,
+};
+
 function reducer(state, action) {
   switch (action.type) {
     
-    // Toggles a photos liked badge by checking if the photos ID is included in the favPhotos array, stored 
-    // in state. If photo ID is not included it is added, if it is there it is removed. If the photo is included
-    // PhotoFavButton passes isFavourite as the 'selected' prop to FavIcon as 'true' and the heart isd rendered
-    // filled in.
+// Toggles a photos liked badge by checking if the photos ID is included in the favPhotos array, stored 
+// in state. If photo ID is not included it is added, if it is there it is removed. If the photo is included
+// PhotoFavButton passes isFavourite as the 'selected' prop to FavIcon as 'true' and the heart isd rendered
+// filled in.
     case ACTIONS.FAV_PHOTO_TOGGLE: {
       const isFav = state.favPhotos.includes(action.payload.photoId);
       const newFavPhotos = isFav
@@ -88,13 +96,6 @@ function reducer(state, action) {
 
 
 export function useApplicationData() {
-  const initialState = {
-    modalViewInfo: { view: false, photo: null },
-    favPhotos: [],
-    photoData: [],
-    topicData: [],
-    selectedTopicId: null,
-  };
 
   useEffect(() => {
     fetch('/api/photos')

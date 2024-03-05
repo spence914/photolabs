@@ -9,6 +9,11 @@ const PhotoListItem = (props) => {
   const clickHandler = () => {
     props.updateModalViewInfo(props.photo);
     props.toggleModalView();
+      window.scrollTo({
+    top: 150,
+    left: 0,
+    behavior: 'smooth',
+  });
   }
   
   return (
@@ -18,10 +23,10 @@ const PhotoListItem = (props) => {
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={props.photo.user.profile} />
         <div className="photo-list__user-info">
-          <h2>{props.photo.user.name}</h2>
-          <p className="photo-list__user-location">
+          <p>{props.photo.user.name}</p>
+          <div className="photo-list__user-location">
             {props.photo.location.city}, {props.photo.location.country}
-          </p>
+          </div>
         </div>
       </div>
     </div>

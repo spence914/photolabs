@@ -18,6 +18,7 @@ const PhotoDetailsModal = (props) => {
         favPhotos={props.favPhotos}
         updateModalViewInfo={props.updateModalViewInfo}
         toggleModalView={props.toggleModalView}
+        modalViewInfo={props.modalViewInfo}
       />
     ));
   };
@@ -37,7 +38,7 @@ const PhotoDetailsModal = (props) => {
           favPhotos={props.favPhotos}
         />
         <img
-          src={props.modalViewInfo.photo.urls.regular}
+          src={props.modalViewInfo.photo.urls.full}
           className="photo-details-modal__image "
         />
         <div className="photo-details-modal__photographer-details">
