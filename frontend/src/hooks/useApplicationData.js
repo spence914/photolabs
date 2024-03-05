@@ -142,13 +142,18 @@ export function useApplicationData() {
     dispatch({ type: ACTIONS.SET_SELECTED_TOPIC, payload: { topicId } });
   };
 
+  const updatePhotoData = (photoData) => {
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData });
+  }
+
   return {
     state,
     onClosePhotoDetailsModal,
     setPhotoSelected,
     updateToFavPhotoIds,
     displayLikeBadge: state.favPhotos.length > 0,
-    updateSelectedTopic
+    updateSelectedTopic,
+    updatePhotoData
   };
 }
 

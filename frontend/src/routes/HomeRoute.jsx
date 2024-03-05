@@ -14,6 +14,10 @@ const HomeRoute = (props) => {
         topics={props.topics}
         displayLikeBadge={props.displayLikeBadge}
         updateSelectedTopic={props.updateSelectedTopic}
+        favPhotos={props.favPhotos}
+        photos={props.photos}
+        updatePhotoData={props.updatePhotoData}
+
       />
       <PhotoList
         photos={props.photos}

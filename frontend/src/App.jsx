@@ -19,6 +19,7 @@ const {
   updateToFavPhotoIds,
   displayLikeBadge,
   updateSelectedTopic,
+  updatePhotoData,
 } = useApplicationData();
 
 
@@ -34,6 +35,7 @@ const {
         favPhotos={favPhotos}
         displayLikeBadge={displayLikeBadge}
         updateSelectedTopic={updateSelectedTopic}
+        updatePhotoData={updatePhotoData}
       />
       {modalViewInfo.view && (
         <PhotoDetailsModal
